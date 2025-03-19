@@ -6,7 +6,7 @@ const cartrouter = require('./routes/cartRoutes');
 
 const app=express();
 
-const allowedOrigins=[ecom-frontend-iwfpsuf9k-shaik-sahira-zuhi-s-projects.vercel.app,ecom-frontend-beige.vercel.app]
+const allowedOrigins=["ecom-frontend-iwfpsuf9k-shaik-sahira-zuhi-s-projects.vercel.app","ecom-frontend-beige.vercel.app"]
 
 app.use(cors({
     origin: function (origin, callback) {
