@@ -1,7 +1,7 @@
 const Cart=require('../models/Cart')
 
 exports.addTocart=async(req,res)=>{
-    const {productId, name,price}=req.body
+    const {productId,name,price}=req.body
 
     if(!productId)return res.status(400).json({message:"Product Id is missing"})
 
@@ -22,14 +22,14 @@ exports.addTocart=async(req,res)=>{
 }
 exports.getCart=async(req,res)=>{
     const cart=await Cart.findOne({userId:req.user.id})
-    res.json(cart?cart.items:[])
+    res.json(cart ? cart.items:[])
 }
 exports.removeFromCart=async(req,res)=>{
-    const {productId}=req.body
+    const { productId }=req.body
     let cart=await Cart.findOne({userId: req.user.id})
     if(!cart) return res.status(400).json({message:"Cart not found"})
 
-    cart.items=cart.items.filter((item)=>item.productId!==productId)
+    cart.items=cart.items.filter((item)=>item.productId !== productId)
     await cart.save()
     res.json({cart,message:"Item removed from cart"})
 }
